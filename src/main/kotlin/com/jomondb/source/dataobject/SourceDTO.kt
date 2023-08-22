@@ -1,10 +1,14 @@
 package com.jomondb.source.dataobject
 
 import java.util.*
+import kotlin.collections.ArrayList
+
+
 
 data class SourceDTO (
     val ID: Int,
     val src_type: String,
+    val authors: ArrayList<ExpertIDWithType>?,
     val Year: Int?,
     val Date: Date?,
     val Title: String,

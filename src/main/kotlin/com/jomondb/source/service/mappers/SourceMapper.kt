@@ -18,7 +18,8 @@ class SourceMapper {
         Level = Level,
         Publisher = Publisher,
         Location = Location,
-        ConferenceID = ConferenceID)
+        ConferenceID = ConferenceID,
+        authors = null)
 
     fun SourceToSourceDTO(source: Sources): SourceDTO{
         return source.toSourceDTO()

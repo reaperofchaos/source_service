@@ -16,8 +16,8 @@ class AuthorController(val expertService: ExpertService) {
     val mapper = ExpertMapper()
 
     @GetMapping("/")
-    fun test(): String{
-        return "test";
+    fun getAllExperts(): List<ExpertDTO>{
+        return mapper.listExpertToListExpertDTO(expertService.getAllExperts())
     }
 
     @GetMapping("/{id}")
