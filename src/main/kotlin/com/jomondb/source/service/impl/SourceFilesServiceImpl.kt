@@ -9,9 +9,8 @@ import org.springframework.stereotype.Service
 @Service
 class SourceFilesServiceImpl(val sourceFilesRepository: SourceFilesRepository):
     SourceFilesService {
-    override fun createNewSourceFile(sourceFile: SourceFiles): String{
-        sourceFilesRepository.save(sourceFile)
-        return "The file have been successfully attached to the source."
+    override fun createNewSourceFile(sourceFile: SourceFiles): SourceFiles{
+        return sourceFilesRepository.save(sourceFile)
     }
 
     override fun getSourceFilesForSource(id: Int): List<SourceFiles>{

@@ -9,7 +9,7 @@ class SourceFileMapper {
         SrcId = SrcId,
         SrcType = SrcType,
         SrcLocation = SrcLocation,
-        driveId = driveId,
+        DriveId = DriveId,
         Website = Website,
         DOI = DOI
     )
@@ -29,7 +29,7 @@ class SourceFileMapper {
         SrcId = SrcId,
         SrcType = SrcType,
         SrcLocation = SrcLocation,
-        driveId = driveId,
+        DriveId = DriveId,
         Website = Website,
         DOI = DOI
     )

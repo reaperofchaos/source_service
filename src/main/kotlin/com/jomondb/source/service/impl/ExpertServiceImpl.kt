@@ -14,4 +14,8 @@ class ExpertServiceImpl(private val expertRepository: ExpertRepository): ExpertS
     override fun findExpertById( id: Int): Experts?{
         return expertRepository.findByIdOrNull(id)
     }
+
+    override fun createExpert(experts: Experts): Experts {
+        return expertRepository.save(experts)
+    }
 }

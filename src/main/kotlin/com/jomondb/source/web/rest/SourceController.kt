@@ -53,6 +53,7 @@ class SourceController(val sourceService: SourceService,
 
     @PostMapping("/file")
     fun addFileToSource(@RequestBody sourceFile: SourceFileDTO): ResponseEntity<SourceFileDTO> {
+        println(sourceFile)
         val creationResponse = sourceFilesService.createNewSourceFile(sourceFileMapper.SourceFileDTOToSourceFile(sourceFile))
 
         return ResponseEntity(sourceFile, HttpStatus.OK)
