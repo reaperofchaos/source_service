@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
 
 @RestController
-@RequestMapping("/source")
+@RequestMapping("/g")
 class SourceController(val sourceService: SourceService,
                        val authorInSourceService: AuthorInSourceService,
                        val sourceFilesService: SourceFilesService) {

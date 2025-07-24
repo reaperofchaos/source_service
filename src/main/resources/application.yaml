@@ -1,0 +1,42 @@
+server:
+  port: ${PORT:8080}
+spring:
+  application:
+    name: source
+  jpa:
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url: jdbc:mysql://${DB_SERVER}/${DB_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        prefer-ip-address: true
+        register: true
+        deregister: true
+        service-name: ${spring.application.name}
+        instance-id: ${spring.application.name}-${random.uuid}
+        healthCheckPath: /actuator/health
+        healthCheckInterval: 10s
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info"
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true
+  health:
+    livenessState:
+      enabled: true
+    readinessState:
+      enabled: true
