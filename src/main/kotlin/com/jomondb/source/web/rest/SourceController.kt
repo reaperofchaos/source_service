@@ -4,7 +4,9 @@ import com.jomondb.source.dataobject.SourceDTO
 import com.jomondb.source.dataobject.SourceFileDTO
 import com.jomondb.source.domain.AuthorsInSource
 import com.jomondb.source.domain.SourceFiles
+import com.jomondb.source.integration.rest.dataobject.DownloadFile
 import com.jomondb.source.service.AuthorInSourceService
+import com.jomondb.source.service.GSuiteService
 import com.jomondb.source.service.SourceFilesService
 import com.jomondb.source.service.SourceService
 import com.jomondb.source.service.mappers.SourceFileMapper
@@ -18,13 +20,20 @@ import org.springframework.web.server.ResponseStatusException
 @RequestMapping("/g")
 class SourceController(val sourceService: SourceService,
                        val authorInSourceService: AuthorInSourceService,
-                       val sourceFilesService: SourceFilesService) {
+                       val sourceFilesService: SourceFilesService,
+    val gSuiteService: GSuiteService){
+
     val mapper = SourceMapper()
     val sourceFileMapper = SourceFileMapper()
 
     @GetMapping("/")
     fun test(): String{
         return "test";
+    }
+
+    @GetMapping("/folders")
+    fun getFolders(): List<DownloadFile> {
+        return gSuiteService.getFolders();
     }
 
     @GetMapping("/{id}")
@@ -63,6 +72,4 @@ class SourceController(val sourceService: SourceService,
     fun deleteAuthor(@PathVariable id: Int): ResponseEntity<String>{
         return ResponseEntity(sourceService.deleteSource(id), HttpStatus.OK)
     }
-
-
 }

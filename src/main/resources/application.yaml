@@ -40,3 +40,7 @@ management:
       enabled: true
     readinessState:
       enabled: true
+
+# custom gateway
+gateway:
+  hostname: ${GATEWAY_HOST}
