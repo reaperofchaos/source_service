@@ -1,11 +1,25 @@
 package com.jomondb.source.service
 
-import com.jomondb.source.domain.Experts
+import com.jomondb.source.integration.rest.dataobject.ExpertDTO
+import com.jomondb.source.integration.rest.feign.ExpertServiceFeign
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Service
 
-interface ExpertService{
-    fun getAllExperts(): List<Experts>
+@Service
+class ExpertService{
+    @Autowired
+    private lateinit var expertServiceFeign: ExpertServiceFeign
 
-    fun createExpert(experts: Experts): Experts
+    fun getAllExperts(): List<ExpertDTO>{
+        return expertServiceFeign.getAllExperts();
+    }
 
-    fun findExpertById(id: Int): Experts?
+
+    fun createExpert(expert: ExpertDTO): ExpertDTO{
+        return expertServiceFeign.createExpert(expert)
+    }
+
+    fun findExpertById(id: Int): ExpertDTO?{
+        return expertServiceFeign.getExpertById(id)
+    }
 }

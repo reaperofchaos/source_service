@@ -1,6 +1,4 @@
-package com.jomondb.source.dataobject
-
-import jakarta.persistence.Id
+package com.jomondb.source.integration.rest.dataobject
 
 data class ExpertDTO (
     val ID: Int,
@@ -8,4 +6,4 @@ data class ExpertDTO (
     val MiddleName: String?,
     val LastName: String?,
     val Suffix: String?
-);
+)
